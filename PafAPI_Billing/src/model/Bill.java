@@ -117,7 +117,7 @@ public class Bill{
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-
+			//bill details update success
 			output = "Updated successfully";
 		} catch (Exception e) {
 			output = "Error while updating the billing.";
