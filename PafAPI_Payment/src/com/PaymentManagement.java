@@ -41,7 +41,7 @@ public class PaymentManagement {
 	@Produces(MediaType.TEXT_PLAIN)
 
 	public String updatePayment(String paymentData) {
-		// Convert the input string to a JSON object
+		// Convert the input string of payment details to a JSON object 
 		JsonObject PaymentMObject = new JsonParser().parse(paymentData).getAsJsonObject();
 		// Read the values from the JSON object
 		String pay_id = PaymentMObject.get("pay_id").getAsString();
