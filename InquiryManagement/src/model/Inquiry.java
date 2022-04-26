@@ -16,7 +16,7 @@ public class Inquiry {
 
 			// Provide the correct details: DBServer/DBName, username, password
 			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/pafelectricity?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+					"jdbc:mysql://localhost:3306/apielectricity?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 					"root", "");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -32,7 +32,7 @@ public class Inquiry {
 				return "Error while connecting to the database for inserting.";
 			}
 			// create a prepared statement
-			String query = " insert into inquiry1(`inqID`,`CustomerName`,`Address`,`Date`,`Reason`)"
+			String query = " insert into inqmg(`inqID`,`CustomerName`,`Address`,`Date`,`Reason`)"
 					+ " values (?, ?, ?, ?, ?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
@@ -61,7 +61,7 @@ public class Inquiry {
 			}
 			// Prepare the html table to be displayed
 			output = "<table border=\"1\"><tr><th>ID</th><th>Customer Name</th><th>Address</th><th>Inquiry Date</th><th>Inquiry Reason</th></tr>";
-			String query = "select * from inquiry1 ";
+			String query = "select * from inqmg ";
 			Statement stmt = (Statement) con.createStatement();
 			ResultSet rs = ((java.sql.Statement) stmt).executeQuery(query);
 			// iterate through the rows in the result set
@@ -101,7 +101,7 @@ public class Inquiry {
 			}
 
 			// create a prepared statement
-			String query = "UPDATE inquiry1 SET CustomerName=?,Address=?,Date=?,Reason=?" + "WHERE inqID=?";
+			String query = "UPDATE inqmg SET CustomerName=?,Address=?,Date=?,Reason=?" + "WHERE inqID=?";
 
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 
@@ -136,7 +136,7 @@ public class Inquiry {
 			}
 
 			// create a prepared statement
-			String query = "delete from inquiry1 where inqID=?";
+			String query = "delete from inqmg where inqID=?";
 
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 
