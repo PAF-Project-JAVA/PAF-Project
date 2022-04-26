@@ -150,7 +150,7 @@ public class User {
 			preparedStmt.execute();
 			con.close();
 
-			output = "Deleted successfully";
+			output = "User Details Deleted successfully";
 		} catch (Exception e) {
 			output = "Error while deleting the user.";
 			System.err.println(e.getMessage());
