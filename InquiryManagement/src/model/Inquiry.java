@@ -116,7 +116,7 @@ public class Inquiry {
 			preparedStmt.execute();
 			con.close();
 
-			output = "Details Updated successfully";
+			output = "Inquiry Details Updated successfully";
 		} catch (Exception e) {
 			output = "Error while updating the inquiry.";
 			System.err.println(e.getMessage());
@@ -147,7 +147,7 @@ public class Inquiry {
 			preparedStmt.execute();
 			con.close();
 
-			output = "Details Deleted successfully";
+			output = "Inquiry Details Deleted successfully";
 		} catch (Exception e) {
 			output = "Error while deleting the inquiry.";
 			System.err.println(e.getMessage());
