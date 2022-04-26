@@ -44,7 +44,7 @@ public class User {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			output = "Inserted successfully";
+			output = "User Inserted successfully";
 		} catch (Exception e) {
 			output = "Error while inserting the user.";
 			System.err.println(e.getMessage());
@@ -86,12 +86,12 @@ public class User {
 			// Complete the html table
 			output += "</table>";
 		} catch (Exception e) {
-			output = "Error while reading the user.";
+			output = "Error while reading the user data.";
 			System.err.println(e.getMessage());
 		}
 		return output;
 	}
-
+  //update user
 	public String updateUser(String uID, String uName, String uAddress, String uEmail, String uNIC, String uPhoneNo) {
 		String output = "";
 
@@ -119,7 +119,7 @@ public class User {
 			preparedStmt.execute();
 			con.close();
 
-			output = "Updated successfully";
+			output = "User Updated successfully";
 		} catch (Exception e) {
 			output = "Error while updating the user.";
 			System.err.println(e.getMessage());
@@ -127,7 +127,7 @@ public class User {
 
 		return output;
 	}
-
+	//user delete
 	public String deleteUser(String uID) {
 		String output = "";
 
