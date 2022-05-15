@@ -23,7 +23,9 @@ public class User {
 		}
 		return con;
 	}
-
+	
+    //insert user
+	
 	public String insertUser(String uName, String uAddress, String uEmail, String uNIC, String uPhoneNo) {
 		String output = "";
 		try {
@@ -44,14 +46,20 @@ public class User {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			output = "User Inserted successfully";
-		} catch (Exception e) {
+			
+			String newUsers = readUser();
+			output = "{\"status\":\"success\",\"data\":\""+newUsers+"\"}";
+		//	output = "User Inserted successfully";
+		}
+		catch (Exception e) {
 			output = "Error while inserting the user.";
 			System.err.println(e.getMessage());
 		}
 		return output;
 	}
 
+	//read user
+	
 	public String readUser() {
 		String output = "";
 		try {
@@ -60,7 +68,16 @@ public class User {
 				return "Error while connecting to the database for reading.";
 			}
 			// Prepare the html table to be displayed
-			output = "<table border=\"1\"><tr><th>ID</th><th>User Name</th><th>Address</th><th>Email</th><th>NIC</th><th>Phone No</th></tr>";
+			
+		//	output = "<table border=\"1\"><tr><th>ID</th><th>User Name</th><th>Address</th><th>Email</th><th>NIC</th><th>Phone No</th><th>Action</th></tr>";
+			 output = "<table border=\"1\" class=\"table\"><tr><th>ID</th>"
+				 		+ "<th>User Name</th>"
+				 		+ "<th>Address</th>"
+				 		+ "<th>Email</th>"
+				 		+ "<th>NIC</th>"
+				 		+ "<th>Phone No</th>"
+				 		+ "<th>Update</th>"
+				 		+ "<th>Remove</th></tr>"; 
 			String query = "select * from usermg";
 			Statement stmt = (Statement) con.createStatement();
 			ResultSet rs = ((java.sql.Statement) stmt).executeQuery(query);
@@ -80,7 +97,11 @@ public class User {
 				output += "<td>" + uEmail + "</td>";
 				output += "<td>" + uNIC + "</td>";
 				output += "<td>" + uPhoneNo + "</td>";
-				
+				 // buttons
+				 output += "<td><input name='btnUpdate' type='button' value='Update' "
+						 + "class='btnUpdate btn btn-secondary' data-uid='" + uID + "'></td>"
+						 + "<td><input name='btnRemove' type='button' value='Remove' "
+						 + "class='btnRemove btn btn-danger' data-uid='" + uID + "'></td></tr>"; 
 			}
 			con.close();
 			// Complete the html table
@@ -91,7 +112,9 @@ public class User {
 		}
 		return output;
 	}
+	
   //update user
+	
 	public String updateUser(String uID, String uName, String uAddress, String uEmail, String uNIC, String uPhoneNo) {
 		String output = "";
 
@@ -113,7 +136,7 @@ public class User {
 			preparedStmt.setString(3, uEmail);
 			preparedStmt.setString(4, uNIC);
 			preparedStmt.setString(5, uPhoneNo);
-			preparedStmt.setInt(6, Integer.parseInt(uID));
+			preparedStmt.setInt(0, Integer.parseInt(uID));
 
 			// execute the statement
 			preparedStmt.execute();
@@ -127,7 +150,9 @@ public class User {
 
 		return output;
 	}
+	
 	//user delete
+	
 	public String deleteUser(String uID) {
 		String output = "";
 
@@ -149,8 +174,8 @@ public class User {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-
-			output = "User Details Deleted successfully";
+			
+			output = "User Deleted successfully";
 		} catch (Exception e) {
 			output = "Error while deleting the user.";
 			System.err.println(e.getMessage());

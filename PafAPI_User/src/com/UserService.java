@@ -1,3 +1,4 @@
+/*
 package com;
 
 import javax.ws.rs.*;
@@ -73,3 +74,4 @@ public class UserService {
 	}
 	
 }
+*/
