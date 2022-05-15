@@ -14,7 +14,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-6"> 
-					<h1>User Management</h1>
+					<h1>User Service</h1>
 					
 					<form id="formUser" name="formUser" method="post" action="user.jsp">
 					
