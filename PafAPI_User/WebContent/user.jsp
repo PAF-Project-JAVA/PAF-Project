@@ -5,7 +5,7 @@
 <html>
 	<head>
 	<meta charset="ISO-8859-1">
-	<title>User Management</title>
+	<title>Users Management</title>
 		<link rel="stylesheet" href="Views/bootstrap.min.css">
 		<script src="Components/jquery-3.6.0.min.js"></script>
 		<script src="Components/user.js"></script>
